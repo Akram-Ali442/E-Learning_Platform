@@ -1,0 +1,188 @@
+/* ----------------- Reset ----------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ----------------- Body ----------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eef2f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ----------------- Header ----------------- */
+#header {
+    background-color: #1f2937; /* غامق وجذاب */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #10b981; /* أخضر جذاب */
+}
+
+#header .menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#header .menu li {
+    display: flex;
+    align-items: center;
+}
+
+/* ----------------- Buttons & Links ----------------- */
+#header .menu a,
+#header .menu button {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* زر تسجيل الدخول */
+#header .menu a {
+    background-color: #3b82f6; /* أزرق */
+}
+
+#header .menu a:hover {
+    background-color: #2563eb;
+}
+
+/* زر تسجيل الخروج */
+#header .menu button {
+    background-color: #ef4444; /* أحمر */
+}
+
+#header .menu button:hover {
+    background-color: #b91c1c;
+}
+
+/* ----------------- Content ----------------- */
+#content {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ----------------- Responsive ----------------- */
+@media (max-width: 768px) {
+    #header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #header .menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    #content {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+}
+
+/* ----------------- Login Form ----------------- */
+.module {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.module h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+.module p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4b5563; /* رمادي متوسط */
+}
+
+/* تنسيق form */
+.module form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* الحقول */
+.module input[type="text"],
+.module input[type="username"],
+.module input[type="password"] {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.module input[type="text"]:focus,
+.module input[type="username"]:focus,
+.module input[type="password"]:focus {
+    border-color: #3b82f6; /* أزرق عند التركيز */
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    outline: none;
+}
+
+/* زر تسجيل الدخول */
+.module input[type="submit"] {
+    padding: 12px;
+    background-color: #3b82f6; /* أزرق جذاب */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.module input[type="submit"]:hover {
+    background-color: #2563eb;
+}
+
+/* رسائل الخطأ */
+.module .errorlist {
+    color: #ef4444; /* أحمر */
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .module {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+}
