@@ -3,6 +3,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.db import models
 from .fields import OrderField
+from django.template.loader import render_to_string
+# from django.urls import reverse
 
 
 class Subject(models.Model):
@@ -31,6 +33,11 @@ class Course(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    students = models.ManyToManyField(
+        User,
+        related_name='courses_joined',
+        blank=True
+    )
     
     class Meta:
         ordering = ['-created']
@@ -38,7 +45,8 @@ class Course(models.Model):
     def __str__(self):
         return self.title
     
-    
+    # def get_absolute_url(self):
+    #     return reverse('course_detail', args=[self.slug])
 class Module(models.Model):
     course = models.ForeignKey(
         Course, related_name='modules', on_delete=models.CASCADE
@@ -75,8 +83,7 @@ class Content(models.Model):
     
     
     
-    
-    
+       
 class ItemBase(models.Model):
     owner = models.ForeignKey(User,
         related_name='%(class)s_related',
@@ -86,11 +93,17 @@ class ItemBase(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
+    def render(self):
+        return render_to_string(
+            f'courses/content/{self._meta.model_name}.html',
+            {'item':self}
+        )
     class Meta:
         abstract = True
         
     def __str__(self):
         return self.title
+    
     
 class Text(ItemBase):
     content = models.TextField()
